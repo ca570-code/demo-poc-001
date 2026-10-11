@@ -1,0 +1,1 @@
+{"artifact_id":"DEMO-REDACTION-REPORT-001","pii_fields":["customer","customer_license"],"status":"PASS","unredacted_leak_count":0,"version":"1.0.0"}

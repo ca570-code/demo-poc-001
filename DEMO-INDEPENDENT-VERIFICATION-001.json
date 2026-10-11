@@ -1,0 +1,1 @@
+{"artifact_id":"DEMO-INDEPENDENT-VERIFICATION-001","failures":[],"manifest_signature_status":"UNSIGNED","note":"PASS verifies hash integrity and exact deterministic replay. Cryptographic signer verification is NOT performed while manifest is UNSIGNED.","status":"PASS"}
