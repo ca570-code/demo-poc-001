@@ -19,6 +19,12 @@ This is the repository's test gate. A passing run must report `"status": "PASS"`
 - Do not weaken deterministic checks or hash validation.
 - If a fixture changes intentionally, update the affected frozen outputs and the evidence manifest together.
 
+## updating frozen artifacts and evidence hashes
+
+When a change intentionally alters the normalization behavior or any tracked fixture, update the affected frozen JSON artifacts and the SHA-256 entries in `DEMO-EVIDENCE-001.json` together.
+
+Do not weaken `verify_poc.py` to accept mismatches or disable the deterministic comparison checks. The verifier must continue to fail if the canonical outputs drift.
+
 ## Pull requests
 
 - Keep changes focused.

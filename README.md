@@ -1,8 +1,12 @@
 # DEMO_POC_001
 
-[![Python verification](https://github.com/ca570-code/demo-poc-001/actions/workflows/python-check.yml/badge.svg)](https://github.com/ca570-code/demo-poc-001/actions/workflows/python-check.yml)
+[![Python verification](https://github.com/ca570-code/demo-poc-001/actions/workflows/verify.yml/badge.svg)](https://github.com/ca570-code/demo-poc-001/actions/workflows/verify.yml)
 
 Minimum executable PoC for deterministic normalization, PII redaction, benchmark replay, and evidence hashing.
+
+## Supported Python
+
+Use Python 3.12 for local development. This project intentionally uses only the standard library.
 
 ## Run
 `python verify_poc.py`
