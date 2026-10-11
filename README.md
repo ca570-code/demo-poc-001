@@ -11,6 +11,16 @@ Use Python 3.12 for local development. This project intentionally uses only the 
 ## Run
 `python verify_poc.py`
 
+## Validate repository artifacts
+
+Use the read-only contract check before review or CI:
+
+```powershell
+python validate_artifacts.py
+```
+
+This validates required top-level fields, artifact IDs, data types, internal consistency, and evidence-manifest references without modifying any files.
+
 ## Regenerate frozen artifacts
 
 Use the repository's explicit regeneration command when intentionally changing deterministic outputs or the evidence manifest:

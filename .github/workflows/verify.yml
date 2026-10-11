@@ -18,6 +18,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Validate repository JSON contracts
+        run: python validate_artifacts.py
+
       - name: Check regenerated artifacts are current
         run: python regenerate_frozen_artifacts.py --check
 
