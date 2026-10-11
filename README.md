@@ -11,6 +11,23 @@ Use Python 3.12 for local development. This project intentionally uses only the 
 ## Run
 `python verify_poc.py`
 
+## Regenerate frozen artifacts
+
+Use the repository's explicit regeneration command when intentionally changing deterministic outputs or the evidence manifest:
+
+```powershell
+python regenerate_frozen_artifacts.py --write
+```
+
+This script writes the derived frozen artifacts and refreshes the SHA-256 hashes in `DEMO-EVIDENCE-001.json`.
+The command requires `--write`; without it, nothing is modified.
+
+For CI and change validation, use:
+
+```powershell
+python regenerate_frozen_artifacts.py --check
+```
+
 ## Current result
 {
   "artifact_id": "DEMO-INDEPENDENT-VERIFICATION-001",

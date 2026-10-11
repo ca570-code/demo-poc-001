@@ -79,6 +79,51 @@ class TransformEdgeCaseTests(unittest.TestCase):
         self.assertEqual(actual[0]["customer"], "[REDACTED]")
         self.assertEqual(actual[0]["customer_license"], "[REDACTED]")
 
+    def test_verify_fails_when_a_tracked_artifact_has_been_tampered(self):
+        import json
+        import shutil
+        import subprocess
+        import sys
+        import tempfile
+        from pathlib import Path
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            src = Path(__file__).resolve().parent
+            dst = Path(tmpdir)
+            for name in [
+                "benchmark_runner.py",
+                "verify_poc.py",
+                "DEMO-EVIDENCE-001.json",
+                "DEMO-BENCHMARK-REPORT-001.json",
+                "DEMO-DATASET-001.json",
+                "DEMO-GROUND-TRUTH-001.json",
+                "DEMO-NORMALIZED-001.json",
+                "DEMO-REDACTION-REPORT-001.json",
+                "DEMO-TAXONOMY-001.json",
+                "DEMO-VALIDATION-RULES-001.json",
+            ]:
+                shutil.copy2(src / name, dst / name)
+
+            tampered = dst / "DEMO-NORMALIZED-001.json"
+            payload = json.loads(tampered.read_text(encoding="utf-8"))
+            payload[0]["product_name"] = "TAMPERED"
+            tampered.write_text(json.dumps(payload, sort_keys=True, separators=(",", ":")) + "\n", encoding="utf-8")
+
+            proc = subprocess.run(
+                [sys.executable, str(dst / "verify_poc.py")],
+                capture_output=True,
+                text=True,
+                cwd=str(dst),
+            )
+
+            self.assertNotEqual(proc.returncode, 0)
+            self.assertIn('"status": "FAIL"', proc.stdout)
+            self.assertTrue(
+                "HASH:DEMO-NORMALIZED-001.json" in proc.stdout
+                or "NORMALIZED_OUTPUT" in proc.stdout,
+                proc.stdout,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

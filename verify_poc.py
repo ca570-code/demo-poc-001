@@ -21,3 +21,5 @@ result={"artifact_id":"DEMO-INDEPENDENT-VERIFICATION-001","status":"PASS" if not
         "note":"PASS verifies hash integrity and exact deterministic replay. Cryptographic signer verification is NOT performed while manifest is UNSIGNED."}
 (R/"DEMO-INDEPENDENT-VERIFICATION-001.json").write_text(json.dumps(result,sort_keys=True,separators=(",",":"))+"\n")
 print(json.dumps(result,indent=2))
+if fail:
+    raise SystemExit(1)

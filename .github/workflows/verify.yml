@@ -18,5 +18,11 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Check regenerated artifacts are current
+        run: python regenerate_frozen_artifacts.py --check
+
       - name: Run verifier
         run: python verify_poc.py
+
+      - name: Run unit tests
+        run: python -m unittest -q
