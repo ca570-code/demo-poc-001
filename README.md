@@ -22,3 +22,15 @@ It also does NOT provide cryptographic non-repudiation because no vendor signing
 The manifest is SHA-256 hash-bound and the replay test is executable.
 
 Benchmark result: 89/89 fields = 100.000000% against frozen transformation ground truth.
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes.
+
+## Security
+
+Please review [SECURITY.md](SECURITY.md) before reporting vulnerabilities.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
