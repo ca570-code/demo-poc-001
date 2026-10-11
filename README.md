@@ -1,5 +1,7 @@
 # DEMO_POC_001
 
+[![Python verification](https://github.com/ca570-code/demo-poc-001/actions/workflows/python-check.yml/badge.svg)](https://github.com/ca570-code/demo-poc-001/actions/workflows/python-check.yml)
+
 Minimum executable PoC for deterministic normalization, PII redaction, benchmark replay, and evidence hashing.
 
 ## Run
